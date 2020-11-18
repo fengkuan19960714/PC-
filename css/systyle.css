@@ -1,0 +1,104 @@
+@charset "utf-8";
+
+.mines{
+    width:990px;
+height:230px;
+background:rgba(255,255,255,1);
+margin-top: 10px;
+display: flex
+}
+.left-t{
+    width:230px;
+height:230px;
+background:rgba(251,52,53,1);
+box-sizing: border-box;
+padding-top: 30px;
+text-align: center;
+}
+.vip-img{
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    position: relative;
+    margin: 0 auto 10px;
+    
+}
+.vip-img img{
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background-color: #fff;
+}
+.vipbar{
+    position: absolute;
+    bottom: 0 ;
+    left: 50%;
+    transform: translateX(-50%);
+    width:40px;
+height:20px;
+background:#FBD334;
+border:1px solid rgb(175, 117, 117);
+opacity:1;
+border-radius:100px;
+font-size:12px;
+font-family:PingFang SC;
+font-weight:400;
+line-height:16px;
+color:rgba(112,112,112,1);
+text-align: center;
+line-height: 20px;
+}
+
+.mine-price{
+    height: 20px;
+    line-height: 20px;
+    font-size: 12px;
+
+}
+.mine-price>div{
+    flex: 1;
+    text-align: center;
+    margin-top: 40px;
+}
+.mine-price .mine-line{
+    border-right: 1px solid #fff;
+}
+.mines .right{
+    width: 760px;
+    color: #000;
+}
+.mines .right .mine-list>div{
+    flex: 1;
+    text-align: center;
+    margin-top: 52px;
+}
+.mine-text{
+    font-size:12px;
+font-family:PingFang SC;
+font-weight:400;
+line-height:16px;
+color:rgba(251,52,53,1);
+text-align: left;
+margin-left: 28px;
+margin-top: 20px;
+cursor: pointer;
+}
+.mine-info{
+    width: 990px;
+    height: 150px;
+    background-color: #fff;
+    display: flex;
+}
+.mine-order{
+    flex: 1;
+    color: #333333;
+    font-size: 14px;
+}
+.mine-order img{
+    width: 56px;
+    height: 51px;
+    display: inline-block;
+    /* background-color: #999999; */
+    margin-top: 35px;
+   
+}

@@ -1,0 +1,150 @@
+.topImg{
+    width: 100%;
+    height: 410px;
+    background-color: red;
+}
+.coo-title{
+    width:1200px;
+height:60px;
+background:rgba(255,255,255,1);
+margin-top: 20px;
+/* line-height: 60px; */
+padding-top: 13px;
+}
+.coo-bar{
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    /* border: 1px solid #EC2F47; */
+    display: inline-block;
+    margin-top: 10px;
+    margin: 10px 20px 0 10px;
+    text-align: center;
+    line-height: 16px;
+    color: #EC2F47;
+}
+.shopList{
+    background:rgba(255,255,255,1);
+
+}
+.shopList>div{
+    width: 297px;
+    height: 425px;
+    /* border:1px solid rgba(221,221,221,1); */
+    
+
+}
+.shopList img{
+    width: 300px;
+    height: 297px;
+    display: inline-block;
+}
+.shopList1{
+    background:rgba(255,255,255,1);
+
+}
+.shopList1>div{
+    width: 297px;
+    height: 425px;
+    /* border:1px solid rgba(221,221,221,1); */
+    
+
+}
+.shopList1 img{
+    width: 300px;
+    height: 297px;
+    display: inline-block;
+}
+.shop-title{
+    font-size:14px;
+font-family:Microsoft YaHei;
+font-weight:400;
+line-height:19px;
+color:rgba(51,51,51,1);
+}
+.shop-prices{
+    /* width:44px; */
+height:20px;
+background:rgba(252,241,209,1);
+/* width:44px; */
+height:20px;
+color:#BA905C;
+text-align: center;
+line-height: 20px;
+margin-right: 10px;
+font-size: 12px;
+padding: 3px;
+}
+.shop-flit{
+    /* width:32px; */
+    padding: 3px;
+height:20px;
+background:rgba(255,233,236,1);
+font-size:12px;
+font-family:Microsoft YaHei;
+font-weight:400;
+line-height:16px;
+color:rgba(193,58,62,1);
+text-align: center;
+/* line-height: 20px; */
+}
+.coo-heaer{
+    padding: 20px;
+    box-sizing: border-box;
+}
+.coo-titles{
+    width:182px;
+height:38px;
+font-size:14px;
+font-family:PingFang SC;
+font-weight:400;
+line-height:19px;
+color:rgba(51,51,51,1);
+display: -webkit-box;
+    -webkit-line-clamp:2;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    margin: 10px 0;
+}
+.cooslist1{
+    width:590px;
+height:260px;
+background:rgba(255,255,255,1);
+padding: 30px;
+box-sizing: border-box;
+display: flex;
+} 
+.cooslist1 img{
+    width: 200px;
+    height: 200px;
+    /* display: inline-block; */
+}
+.star img{
+    width: 20px;
+    height: 18px;
+    /* background-color: red; */
+    margin-right: 10px;
+}
+.coo-text2{
+    font-size:20px;
+font-family:Microsoft YaHei;
+font-weight:bold;
+line-height:26px;
+color:rgba(51,51,51,1);
+}
+.coos-text{
+    font-size:14px;
+font-family:Microsoft YaHei;
+font-weight:400;
+line-height:19px;
+color:rgba(153,153,153,1);
+}
+.details li{
+    width: 900px;
+    height: 157px;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    padding-top: 30px;
+    box-sizing: border-box;
+}

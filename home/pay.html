@@ -1,0 +1,688 @@
+<!DOCTYPE html
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport"
+		content="width=device-width, initial-scale=1.0 ,minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>结算页面</title>
+
+	<link href="../AmazeUI-2.4.2/assets/css/amazeui.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="../basic/js/jquery-1.7.min.js"></script>
+	<script src="https://ssl.captcha.qq.com/TCaptcha.js"></script>
+	<script src="../basic/js/template-web.js"></script>
+	<link href="../basic/css/demo.css" rel="stylesheet" type="text/css" />
+	<link href="../css/cartstyle.css" rel="stylesheet" type="text/css" />
+	<link href="../css/jsstyle.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="../js/address.js"></script>
+	<script src="../basic/js/model.js"></script>
+	<script src="../basic/js/qrcode.min.js"></script>
+	<script src="../js/base.js"></script>
+	<script src="../js/comfirm.js"></script>
+	<script src="../js/login.js"></script><script src="https://res.wx.qq.com/connect/zh_CN/htmledition/js/wxLogin.js"></script>
+</head>
+
+<body>
+	<div class="login-pop"
+		style="display: none;width: 100%;height: 100%;position: absolute;top: 200px;left: 0;background-color:rgba(1,1,1,.5);z-index:10012;">
+		<div class="logins" style="position: relative;">
+			<div class="cloneLogin"
+				style="font-size: 30px;font-weight: 400;position: absolute;top: 5px;right: 5px;cursor: pointer;">x</div>
+			<div class="login-status" style="display: flex;">
+				<div class="loginBtn1" style="color: #E4393C;">账号登录</div>
+				<div class="regerBtn1">注册</div>
+			</div>
+			<div class="inputList btn1" style="margin-top: 40px;">
+				<input id="input_pwd" value="" placeholder="填写手机号码" />
+				<div></div>
+			</div>
+
+			<div class="inputList btn2" style="margin-top: 10px;margin-bottom: 20px;">
+				<div style="left: 0;"></div>
+				<input id="input_name" value="" style="margin-left: 45px;" placeholder="请填写姓名" />
+			</div>
+			<div class="inputList btn2" style="margin-top: 10px;margin-bottom: 20px;">
+				<div style="left: 0;"></div>
+				<input value="" id="input_phone" style="margin-left: 45px;" placeholder="请填写手机号" />
+			</div>
+
+			<div class="inputList" style="margin-top: 28px;margin-bottom: 27px;">
+				<input id="input_code" class="phone" value="" placeholder="请填写验证码" />
+				<button class="getcode code-1" style="position: absolute;" id="TencentCaptcha" data-appid="2006574121"
+					data-cbfn="callback" type="button">获取验证码</button><button class="getcode code-2" style="position: absolute;" type="button">获取验证码</button>
+			</div>
+
+			<div class="inputList btn2" style="margin-top: 10px;margin-bottom: 20px;">
+				<div style="left: 0;"></div>
+				<input value="" id="input_code1" style="margin-left: 45px;" placeholder="分享成员的手机号即为推荐码" />
+			</div>
+			<button type="button" style="color:#4FB84A;text-align: center;margin-bottom: 10px;background:#fff;border: none;"  class="am-btn am-btn-danger btn2" data-am-modal="{target: '#my-popup'}">
+				《健德商城VIP会员协议》
+			</button>
+
+			<div class="am-popup" id="my-popup">
+				<div class="am-popup-inner">
+					<div class="am-popup-hd">
+						<h4 class="am-popup-title">会员服务条款</h4>
+						<span data-am-modal-close class="am-close">&times;</span>
+					</div>
+					<div class="am-popup-bd">
+						<p class="popups_text">在您注册成为健德生态VIP商城会员之前，请认真阅读本《健德生态会员服务条款》（以下简称“服务条款”）并选择接受或不接受本服务条款，您的购买、登录、使用等行为将视为对本服务条款的接受，并同意接受本服务条款各项条款的约束。 接受此条款并点击注册，注册成为VIP商业会员后，即可享受VIP商城会员服务。</p>
+						<div class="popups_title">会员权利和义务</div>
+						<div class="popups_text">1.健德生态VIP商城会员：是通过健德生态小程序申请会员的客户。</div>
+						<div class="popups_text">2.会员服务：成为健德生态VIP商城以后，在商城购物时可以享受会员优惠和健德生态商城包邮服务，以及健德生态商城其他的优惠活动（如商城拼团，优惠券，促销等单独活动说明）。</div>
+						<div class="popups_text">3.会员身份识别：健德生态商城以会员的微信ID作为唯一会员识别标识，一个微信ID只能注册一个会员账号，请会员在支付前确认自己的微信ID并输入微信支付密码。使用德分显示商品价格的，只能使用德分支付，德分支付请提前设置好德分支付密码，妥善保管并牢记密码。</div>
+						<div class="popups_text">4.健德生态商城会员账号有效期：自注册之日起，终生有效。</div>
+						<div class="popups_text">5.健德生态商城会员账号不计息，不得转让或租借赠予他人，由此产生一切损失自行承担。</div>
+						<div class="popups_text">6.会员在购买商品时，务必提供真实准确的个人信息：收货地址，收货电话，收货人等详细信息，如因会员自己填写的信息有误，造成的损失，健德生态商城一律不承担。</div>
+						<div class="popups_text">7.常规商品（除VIP商城德分商品外）退换货：自商品售出之日（以会员实际收货日期为准）起7日内可以退换货，15日内可以换货。15日后系统自动默认收货的不能退换货。会员在收到货后，请务必仔细检查包装，以及产品是否完好，如有包装破损，可以选择拒收，如产品有质量问题，请第一时间联系健德生态商城客服：400-000-1941。（详见健德生态商城售后服务）</div>
+						<div class="popups_title">用户隐私制度</div>
+						<div class="popups_text">当您在健德生态商城购物时，我们可能需要您提供您个人的微信ID，收货地址，电话号码或其它联络信息，以便我们及时处理您的订单，这些信息仅作为健德生态商城销售和会员购物使用，健德生态商城不会因市场行销目的向健德生态以外的其它公司泄露任何顾客个人信息，但在某些情况下，比如在送货服务中，健德生态商城需要与专业运输公司合作，他们将根据顾客提供的姓名和地址运送健德生态商城的商品。此种情况下，健德生态商城将严格监督合作公司，确保顾客个人信息和隐私不被侵犯。</div>
+						<div class="popups_title">用户的帐号、密码和安全性</div>
+						<div class="popups_text">用户一旦注册健德生态商城会员，系统将自动识别您的微信ID，为会员的唯一识别标识，如果因用户未保管好自己的微信ID帐号和密码，造成的损失，用户将负全部责任。</div>
+					</div>
+				</div>
+			</div>
+			<div class=" btn2" style="color: #999;text-align: center;margin-bottom: 10px;">温馨提示：若无上级成员，推荐码填写17764033375
+			</div>
+			<div class=" btn2 loginBtn regerBtn" style="margin: 0 auto;cursor: pointer;">确认</div>
+
+			<div class="loginBtn btn1" style="cursor: pointer;" id="regerBtn2">登录</div>
+			<div class="imgwechart btn1">
+				<img style="width: 100%;height:100%" src="../images/wx.png">
+			</div>
+			<div class="btn1 wecharts" style="text-align: center;color: #999999">微信登录</div>
+		</div>
+		<div class="register"></div>
+	</div>
+
+	<div class="hmtop" style="background-color: #fff;">
+		<!--顶部导航条 -->
+		<div class="popBtn" style="top: 105px;">
+			<div class="popcar">
+				<div class="clone">x</div>
+				<div class="title6">火车票飞机票预定酒店</div>
+				<div class="title7">上健德购购，购票送资产</div>
+				<div class="bar1" style="display: flex;">
+					<div><img src="../images/jiadehost.png" /></div>
+					<div>
+						<div class="bar-text">健德购购APP</div>
+						<div class="bar-text1">一个提供消费创业资源共和体平台</div>
+						<div class="bar-text2">扫二维码，下载健德购购</div>
+					</div>
+				</div>
+				<div class="popBtns">返回首页</div>
+			</div>
+			<div class="popApp">
+				<div class="clone">x</div>
+				<div class="title6">火车票飞机票预定酒店</div>
+				<div class="title7">上健德购购，购票送资产</div>
+				<div class="bar1" style="display: flex;">
+					<div><img src="../images/jiadehost.png" /></div>
+					<div>
+						<div class="bar-text">健德购购APP</div>
+						<div class="bar-text1">一个提供消费创业资源共和体平台</div>
+						<div class="bar-text2">扫二维码，下载健德购购</div>
+					</div>
+				</div>
+				<div class="popBtns">返回首页</div>
+			</div>
+		</div>
+		<!--顶部导航条 -->
+		<div class="am-container1 header">
+			<div class="ul-list" style="cursor: pointer;">
+				<ul class="message-r" style="position: relative;">
+					<div class="topMessage">
+						<div class="menu-hd loginShow">
+							欢迎光临健德购购，请<a href="#" target="_top" style="color: #FB3435;" class="">登录</a> 成为会员
+						</div>
+						<div><a class="loginShow1" style="color: #FB3435;" href="../person/index.html"></a></div>
+					</div>
+					<div class="topMessage home" style="width: 110px;height: 40rpx;">
+						<div class="menu-hd clicks"><a href="#" target="_top" class="h">我的购物</a></div>
+						<ul class="menu-list" style="display: none;height: 80px;width: 90px;">
+							<div class="bar-text3">已买到的商品</div>
+							<div class="bar-text23">下载建德app</div>
+						</ul>
+					</div>
+					<div class="topMessage my-shangcheng">
+						<div class="menu-hd tabList MyShangcheng"><a href="#" target="_top">收藏夹</a></div>
+					</div>
+					<div class="topMessage mini-cart">
+						<div class="menu-hd shopList shopTop"><a id="mc-menu-hd" href="#" target="_top"><span>商家入驻</span></a>
+						</div>
+					</div>
+					<div class="topMessage favorite">
+						<div class="menu-hd tabList"><a href="#" target="_top"><span>分销中心</span></a></div>
+					</div>
+					<div class="topMessage favorite">
+						<div class="menu-hd tabList"><a href="#" target="_top"><span>名片管理入口</span></a></div>
+					</div>
+					<div class="top-btn">
+						<a href="./shopcart.html" class="lista top-car" style="color:#fff!important">购物车0</a>
+						<a href="../person/order.html" class="lista"
+							style="border:2px solid rgba(221,221,221,1);">我的订单</a>
+					</div>
+				</ul>
+			</div>
+		</div>
+		<script>
+			$(function () {
+				$('.clicks').click(function () {
+					console.log(321312)
+					$(".menu-list").toggle()
+				})
+				$(".loginShow1").text('会员：' + localStorage.getItem("memberInfo"))
+			})
+		</script>
+		<!--悬浮搜索框-->
+
+		<div class="nav white">
+			<div class="logoBig" style="display: flex;">
+				<li><img style="height: 90px;width: 90px;" src="../images/jiandelogo.png" class="imgesBtn" /></li>
+				<div style="margin: 30px 0 0 30px;color: #707070;font-size: 20px;">购物车结算</div>
+			</div>
+		</div>
+
+		<div class="clear"></div>
+	</div>
+
+	<div class="clear"></div>
+	<div class="concent">
+		<!--地址 -->
+		<div class="paycont">
+			<div class="address">
+				<h3>确认收货地址 </h3>
+				<div class="control">
+					<div class="tc-btn createAddr theme-login am-btn am-btn-danger">使用新地址</div>
+				</div>
+				<div class="clear"></div>
+				<ul id="ulAddress">
+
+				</ul>
+
+				<div class="clear"></div>
+				<!-- 地址列表 -->
+				<script id="addressList" type="text/template">
+							{{each pageData value index}}
+							<div class="per-border"></div>
+							<li class="user-addresslist defaultAddr addressBtn" data-id="{{value.address_id}}" data-index="{{index}}" style="{{value.address_is_default==0?'background:#fff':''}}">
+								<div class="address-left">
+									<div class="user DefaultAddr">
+										<span class="buy-address-detail" style="height:37px;line-height:37px;border-bottom:1px solid #eee">   
+                   						<span class="buy-user">{{value.area_info}}</span>
+										<span class="buy-phone">({{value.address_realname}})</span>
+										</span>
+									</div>
+									<div class="default-address DefaultAddr">
+										<span class="buy-line-title buy-line-title-type">收货地址：</span>
+										<span class="buy--address-detail">
+								   		<!-- <span class="province">{{value.area_info}}</span> -->
+										<span class="street">{{value.address_detail}}</span>
+
+									</div>
+								<ins class="deftip" style="{{value.address_is_default==0?'display:none':''}}">默认地址</ins>
+								</div>
+								<div class="address-right">
+									<a href="../person/address.html">
+										<span class="am-icon-angle-right am-icon-lg"></span></a>
+								</div>
+								<div class="clear"></div>
+
+								<div class="new-addr-btn">
+									<a href="#" class="hidden">设为默认</a>
+									<span class="new-addr-bar hidden">|</span>
+									<a class="detail" data-list="{{value}}">编辑</a>
+									<span class="new-addr-bar">|</span>
+									<a href="javascript:void(0);" class="delClick" data-index="{{value.address_id}}">删除</a>
+								</div>
+
+							</li>
+							{{/each}}
+						</script>
+			</div>
+			<!--支付方式-->
+			<div class="logistics">
+				<h3>选择支付方式</h3>
+				<ul class="pay-list">
+					<!-- <li class="pay card"><img src="../images/wangyin.jpg" />银联<span></span></li> -->
+					<li class="pay qq"><img src="../images/weizhifu.jpg" />微信<span></span></li>
+					<li class="pay taobao"><img src="../images/zhifubao.jpg" />支付宝<span></span></li>
+				</ul>
+			</div>
+			<div class="clear"></div>
+
+			<!--订单 -->
+			<div class="concent">
+				<div id="payTable">
+					<h3>确认订单信息</h3>
+					<div class="cart-table-th">
+						<div class="wp">
+
+							<div class="th th-item">
+								<div class="td-inner">商品信息</div>
+							</div>
+							<div class="th th-price">
+								<div class="td-inner">单价</div>
+							</div>
+							<div class="th th-amount">
+								<div class="td-inner">数量</div>
+							</div>
+							<div class="th th-sum">
+								<div class="td-inner">金额</div>
+							</div>
+
+						</div>
+					</div>
+					<div class="clear"></div>
+
+					<div class="shoplist">
+
+					</div>
+					<div class="clear"></div>
+					<!-- </div> -->
+				</div>
+				<script id="payList" type="text/template">
+								{{each pageData value index}}
+								<div class="item-list">
+									<div class="bundle  bundle-last">
+										<div class="bundle-main">
+											{{each value.data values indexs}}
+											<ul class="item-content clearfix">
+												
+												<div>
+													<div class="pay-phone">
+														<li class="td td-item">
+															<div class="item-pic">
+																<a href="#" class="J_MakePoint">
+																	<img style="width:100%;height:100%" src="{{values.goods_image}}" class="itempic J_ItemImg"></a>
+															</div>
+															<div class="item-info">
+																<div class="item-basic-info" style="text-align:center">
+																	<a href="#" class="item-title J_MakePoint" data-point="tbcart.8.11">{{values.goods_name}}</a>
+																</div>
+															</div>
+														</li>
+														<li class="td td-info">
+															<div class="item-props" style="text-align:center">
+																<span class="sku-line">{{values.goods_spec||'单规格'}}</span>
+															</div>
+														</li>
+														<li class="td td-price">
+															<div class="item-price price-promo-promo">
+																<div class="price-content">
+																	<em class="J_Price price-now" style="color:#DD2226">{{values.goods_price}}</em>
+																</div>
+															</div>
+														</li>
+													</div>
+													<li class="td td-amount">
+														<div class="amount-wrapper ">
+															<div class="item-amount ">
+																<span class="phone-title">购买数量</span>
+																<div class="sl">
+																	<!-- <input class="min am-btn" name="" type="button" value="-" /> -->
+																	<div>{{values.goods_num}}</div>
+																	<!-- <input class="add am-btn" name="" type="button" value="+" /> -->
+																</div>
+															</div>
+														</div>
+													</li>
+													<li class="td td-sum">
+														<div class="td-inner">
+															<em tabindex="0" class="J_ItemSum number">{{values.goods_price}}
+															</em>
+														</div>
+													</li>
+												</div>
+												
+											</ul>
+											{{/each}}
+											<div class="clear"></div>
+											<!--留言-->
+					<div class="order-extra">
+						<div class="order-user-info">
+							<div id="holyshit257" class="memo">
+								<label>买家留言：</label>
+								<input type="text" id="store_text" title="建议留言前先与商家沟通确认" placeholder="建议留言前先与商家沟通确认"
+									class="memo-input J_MakePoint c2c-text-default memo-close">
+								<div class="msg hidden J-msg">
+									<p class="error">最多输入500个字符</p>
+								</div>
+							</div>
+						</div>
+
+					</div>
+										</div>
+									</div>
+								</div>
+								{{/each}}
+							</script>
+				<div class="clear"></div>
+				<div class="pay-total" style="display: flex;">
+					<div style="flex: 1;"></div>
+					<!--优惠券 -->
+					<div class="buy-agio" style="flex: 1;">
+						<div class="freight"></div>
+						<li class="td td-coupon">
+							<label class="am-radio am-secondary pays" style="border-bottom: 1px solid #eee;">
+								<input type="checkbox" name="radio3" class="radio1" value="" data-am-ucheck>
+								<div>
+									<div>积分抵扣</div>
+									<div style="color:#999999">(当前积分<span class="pionts"></span>)</div>
+								</div>
+							</label>
+							<div class="am-radio am-secondary pays" style="border-bottom: 1px solid #eee;display: flex;">
+								<input type="checkbox" name="radio3" class="radio2" value="" data-am-ucheck>
+								<div>
+									<div>余额抵扣</div>
+									<div style="color:#999999">(当前余额<span class="userpiont"></span>)</div>
+								</div>
+							</div>
+							<label class="am-radio am-secondary pays1" style="border-bottom: 1px solid #eee;">
+								<input type="radio" name="radio3" class="radio3" value="" data-am-ucheck>
+								<div>
+									<div>德分抵扣</div>
+									<div style="color:#999999">(当前德分<span class="defenpiont"></span>)</div>
+								</div>
+							</label>
+						</li>
+					</div>
+					<div class="clear"></div>
+				</div>
+				<!--含运费小计 -->
+				<div class="buy-point-discharge ">
+					<p class="price g_price ">
+						合计（含运费） <span>¥</span><em class="pay-sum"></em>
+					</p>
+				</div>
+
+				<!--信息 -->
+				<div class="order-go clearfix">
+					<div class="pay-confirm clearfix">
+						<div class="box">
+							<div tabindex="0" id="holyshit267" class="realPay"><em class="t">实付款：</em>
+								<span class="price g_price ">
+									<span>¥</span> <em class="style-large-bold-red " id="J_ActualFee"></em>
+								</span>
+							</div>
+
+							<div id="holyshit268" class="pay-address">
+
+								<p class="buy-footer-address">
+									<span class="buy-line-title buy-line-title-type">寄送至：</span>
+								<div class="addressList"></div>
+								</p>
+								<p class="buy-footer-address">
+
+								</p>
+							</div>
+						</div>
+
+						<div id="holyshit269" class="submitOrder">
+							<div class="go-btn-wrap">
+								<!-- <a id="J_Go" href="#" class="btn-go" tabindex="0" title="点击此按钮，提交订单">提交订单</a> -->
+
+
+								        <a href="#">提交订单</a>
+							</div>
+						</div>
+						<div class="clear"></div>
+						<!-- </div> -->
+					</div>
+				</div>
+
+				<div class="clear"></div>
+			</div>
+		</div>
+	</div>
+	<div class="theme-popover-mask"></div>
+	<div class="theme-popover">
+
+		<!--标题 -->
+		<div class="am-cf am-padding">
+			<div class="am-fl am-cf addopen"><strong class="am-text-danger am-text-lg">新增地址</strong> / <small>Add
+					address</small></div>
+			<div class="am-fl am-cf detail1"><strong class="am-text-danger am-text-lg">编辑地址</strong> / <small>Compile
+					address</small></div>
+		</div>
+		<hr />
+
+		<div class="am-u-md-12">
+			<form class="am-form am-form-horizontal">
+
+				<div class="am-form-group">
+					<label for="user-name" class="am-form-label">收货人</label>
+					<div class="am-form-content">
+						<input type="text" id="user-name" placeholder="收货人">
+					</div>
+				</div>
+
+				<div class="am-form-group">
+					<label for="user-phone" class="am-form-label">手机号码</label>
+					<div class="am-form-content">
+						<input id="user-phone" placeholder="手机号必填" type="email">
+					</div>
+				</div>
+
+				<div class="am-form-group">
+					<label for="user-phone" class="am-form-label">所在地</label>
+					<div class="am-form-content address">
+						<select data-am-selected class="provinces">
+						</select>
+						<select data-am-selected class="city">
+						</select>
+						<select data-am-selected class="district">
+						</select>
+					</div>
+				</div>
+
+				<div class="am-form-group">
+					<label for="user-intro" class="am-form-label">详细地址</label>
+					<div class="am-form-content">
+						<textarea class="" rows="3" id="user-intro" placeholder="输入详细地址"></textarea>
+						<small>100字以内写出你的详细地址...</small>
+					</div>
+				</div>
+				<div class="am-form-group">
+					<h3>默认地址</h3>
+					<label class="am-radio-inline status">
+						<input type="radio" name="radio10" value="pig" data-am-ucheck>设为默认地址
+					</label>
+				</div>
+				<!-- 省 -->
+				<script id="getProvinceid" type="text/template">
+							{{each pageData value index}}
+								<option value="{{index}}">{{value}}</option>
+							{{/each}}
+						</script>
+				<!-- 省 -->
+				<script id="cityid" type="text/template">
+							{{each pageData value index}}
+								<option value="{{value.area_id}}">{{value.area_name}}</option>
+							{{/each}}
+						</script>
+				<!-- 省 -->
+				<script id="districtid" type="text/template">
+							{{each pageData value index}}
+								<option value="{{value.area_id}}">{{value.area_name}}</option>
+							{{/each}}
+						</script>
+
+				<script id="class_headers" type="text/template">
+							{{each pageData value index}}
+								<li class="qc className" data-index="{{index}}"><a href="#" style="font-size: 14px;">{{value.appName}}</a></li>
+							{{/each}}
+						</script>
+				<div class="am-form-group theme-poptit">
+					<div class="am-u-sm-9 am-u-sm-push-3">
+						<div class="addopen am-btn am-btn-danger add-btns">保存</div>
+						<div class="detail1 am-btn am-btn-danger">编辑</div>
+						<div class="am-btn am-btn-danger close">取消</div>
+					</div>
+				</div>
+			</form>
+		</div>
+
+	</div>
+	<!-- 支付宝支付 -->
+	<div class="clear1">
+
+	</div>
+	<div class="shade" style="top: 0;z-index:11"></div>
+	        <div class="login" style="z-index:12">
+		            <p class="title">微信扫码支付<span class="span">&times;</span></p>
+		<p class="loginPrice"></p>
+		            <p class="cont">
+		<div id="qrcode" style="width:140px; height:140px;margin-left:200px;display: inline-block;"></div>
+		</p>
+		<div class="successBtn">若微信支付已完成，请点击！</div>
+		        
+	</div>
+	<!-- 微信支付 -->
+	<div class="am-modal am-modal-no-btn" tabindex="-1" id="doc-modal-1">
+		<div class="am-modal-dialog">
+			<div class="am-modal-hd">微信扫码支付
+				<a href="javascript: void(0)" class="am-close am-close-spin" data-am-modal-close>&times;</a>
+			</div>
+			<div class="am-modal-bd">
+
+			</div>
+		</div>
+	</div>
+	<div class="defenPay" style="display: none;">
+		<div style="width: 1200px;height:100%;margin:0 auto">
+			<div class="pops comfirtbtn" style="display: none;">
+				<view class="clone">x</view>
+				<div style="border:1px solid #000;width:80%;margin: 0 auto;padding-bottom: 20px;">
+					<div class="title">请设置支付密码</div>
+					<input class="settingValue" style="font-size: 20px;">
+				</div>
+				<div class="comfirt setnumber">确定</div>
+			</div>
+			<div class="pops comfirtbtn1" style="display: none;">
+				<view class="clone">x</view>
+				<div style="border:1px solid #000;width:80%;margin: 0 auto;padding-bottom: 20px;">
+					<div class="title">请输入支付密码</div>
+					<input class="textValue" style="font-size: 20px;">
+				</div>
+				<div class="comfirt getetnumber">确定</div>
+			</div>
+		</div>
+	</div>
+	<!-- 页面底部 -->
+	<div style="background-color: #fff;" class="footerTemplate">
+		<div class="am-container consumer" style="display: flex;height: 130px;border-bottom:1px solid #eee ;">
+			<div style="display: flex;">
+				<div class="fontImg">
+					<div class="max_box_1">
+						<div id="box1"></div>
+						<div id="box2"></div>
+						<div id="box3"></div>
+					</div>
+					<div class="max_box_2">
+						<div id="box4"></div>
+						<div id="box5"></div>
+						<div id="box6"></div>
+					</div>
+					<div class="texts">多</div>
+				</div>
+				<div  style="margin-top:17%;" class="decs">品类齐全，轻松购物</div>
+			</div>
+			<div style="display: flex;">
+				<div class="fontImg">
+					<div class="max_box_1">
+						<div id="box1"></div>
+						<div id="box2"></div>
+						<div id="box3"></div>
+					</div>
+					<div class="max_box_2">
+						<div id="box4"></div>
+						<div id="box5"></div>
+						<div id="box6"></div>
+					</div>
+					<div class="texts">快</div>
+				</div>
+				<div  style="margin-top:17%;" class="decs">多仓直发，极速配送</div>
+			</div>
+			<div style="display: flex;">
+				<div class="fontImg">
+					<div class="max_box_1">
+						<div id="box1"></div>
+						<div id="box2"></div>
+						<div id="box3"></div>
+					</div>
+					<div class="max_box_2">
+						<div id="box4"></div>
+						<div id="box5"></div>
+						<div id="box6"></div>
+					</div>
+					<div class="texts">好</div>
+				</div>
+				<div  style="margin-top:17%;" class="decs">正品行货，精致服务</div>
+			</div>
+			<div style="display: flex;">
+				<div class="fontImg">
+					<div class="max_box_1">
+						<div id="box1"></div>
+						<div id="box2"></div>
+						<div id="box3"></div>
+					</div>
+					<div class="max_box_2">
+						<div id="box4"></div>
+						<div id="box5"></div>
+						<div id="box6"></div>
+					</div>
+					<div class="texts">省</div>
+				</div>
+				<div  style="margin-top:17%;" class="decs">天天低价，畅选无忧</div>
+			</div>
+		</div>
+		<div class="am-container footers" style="background-color: #fff;display: flex;">
+			<div class="footer_left">
+				<img src="../images/candorlife.png">
+			</div>
+			<div class="storgeList" style="margin-right:60px">
+				<ul class="class_header uls" style="width:75%;display:flex;flex-wrap: wrap">
+
+				</ul>
+			</div>
+			<div class="footer_code">
+				<img src="../images/gongzhonaho.png">
+				<div class="code_text">健德购购公众号</div>
+				<div class="code_text">扫一扫 关注我们</div>
+			</div>
+			<div class="footer_code">
+				<img src="../images/jiadehost.png">
+				<div class="code_text" style="font-size: 18px;">健德购购APP</div>
+				<div class="code_text">扫一扫 即刻下载</div>
+			</div>
+			<div class="footer_code">
+				<img src="../images/douyin.png">
+				<div class="code_text" style="font-size: 18px;">健德抖音账号</div>
+				<div class="code_text">扫一扫 关注我们</div>
+			</div>
+		</div>
+		<div class="bottom">
+			<div class="am-container" style="display: flex;background-color: #000;color: #fff;">
+				<div class="bottom_text1">专线服务</div>
+				<div class="bottom_phone">400-828-1088</div>
+				<div class="footer_number">
+					<div>©2020  武汉健德生态科技有限公司</div>
+					<div>鄂公网安备 42010202002251号</div>
+					<a style="color: #fff!important;"
+						href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=42010202002228"><img
+							style="width:15px;height:15px" src="../images/huohui.png">鄂ICP备19021339号-1</a>
+				</div>
+			</div>
+
+		</div>
+	</div>
+<div class="codeImg" style="display:none">
+		<div id="wxCodes"></div>
+		<div class="codeClone">关闭</div>
+	</div></body>
+
+</html>

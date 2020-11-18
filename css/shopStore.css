@@ -1,0 +1,48 @@
+.store-List{
+    width: 1200px;
+    /* height: 230px; */
+    /* background-color: #fff; */
+    /* display: flex; */
+    padding:20px;
+    box-sizing: border-box;
+}
+.store-List .store-Lists img{
+    width: 190px;
+    height: 190px;
+    display: inline-block;
+    margin-top: 10px;
+}
+.store-List .store-Lists{
+    width: 1200px;
+    display: flex;
+    text-align: center;
+    margin-top: 20px;
+    background-color: #fff;
+    height: 230px;
+}
+.store-List .store-Lists>div{
+    /* flex: 1; */
+}
+.store-List .store-Lists span{
+    font-size:12px;
+font-family:Microsoft YaHei;
+font-weight:400;
+line-height:16px;
+color:rgba(153,153,153,1);
+}
+.store-Btn{
+    cursor: pointer;
+    width:120px;
+height:50px;
+line-height: 50px;
+background:rgba(255,255,255,1);
+border:1px solid rgba(221,221,221,1);
+opacity:1;
+border-radius:10px;
+font-size:14px;
+font-family:Microsoft YaHei;
+font-weight:400;
+color:rgba(153,153,153,1);
+border: 1px solid #eee;
+border-radius: 10px;
+}

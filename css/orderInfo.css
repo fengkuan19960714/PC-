@@ -1,0 +1,84 @@
+.time{
+    width:1200px;
+height:140px;
+background:rgba(255,255,255,1);
+border:1px solid rgba(170,224,248,1);
+opacity:1;
+padding: 20px;
+box-sizing: border-box;
+display: flex;
+}
+.line-top1{
+    width:10px;
+height:10px;
+background:rgba(241,47,26,1);
+border-radius:50%;
+opacity:1;
+}
+.line-bottom{
+    height: 86px;
+    width: 2px;
+    background-color: #eee;
+    margin-left: 3px;
+}
+.lines{
+    margin: 0 30px;
+}
+.orderDetail{
+    width:1200px;
+/* height:883px; */
+background:rgba(255,255,255,1);
+border:1px solid rgba(170,224,248,1);
+opacity:1;
+margin-top: 20px;
+padding: 20px;
+}
+.orderInfo1{
+    /* height: 55px; */
+    width: 100%;
+    border-bottom: 1px solid #DDDDDD;
+    margin-top: 20px;
+    padding-bottom: 10px;
+}
+.goods_info{
+    width:1150px;
+/* height:142px; */
+background:rgba(255,255,255,1);
+border:1px solid rgba(170,224,248,1);
+opacity:1;
+margin: 10px 0;
+}
+.goods_top{
+    width:1150px;
+height:30px;
+background:rgba(215,239,251,1);
+opacity:1;
+display: flex;
+text-align: center;
+}
+.priceInfo{
+    width:1150px;
+/* height:150px; */
+background:rgba(243,243,243,1);
+border:1px solid rgba(170,224,248,1);
+opacity:1;
+margin-top: 21px;
+display: flex;
+padding: 12px 23px 12px 0 ;
+box-sizing: border-box;
+}
+.text_info>div{
+    margin-top: 10px;
+}
+.text_info .payBtns{
+    width:240px;
+height:50px;
+background:rgba(251,52,53,1);
+opacity:1;
+border-radius:4px;
+text-align: center;
+line-height: 50px;
+color: #fff;
+margin-top: 100px;
+cursor: pointer;
+}

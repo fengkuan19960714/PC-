@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport"
+		content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>商品页面</title>
+
+	<link href="../AmazeUI-2.4.2/assets/css/admin.css" rel="stylesheet" type="text/css" />
+	<link href="../AmazeUI-2.4.2/assets/css/amazeui.css" rel="stylesheet" type="text/css" />
+	<link href="../basic/css/demo.css" rel="stylesheet" type="text/css" />
+	<link href="../css/cooperation.css" rel="stylesheet" type="text/css" />
+	<link href="../css/hmstyle.css" rel="stylesheet" type="text/css" />
+	<link href="../css/skin.css" rel="stylesheet" type="text/css" />
+	<link type="text/css" href="../css/optstyle.css" rel="stylesheet" />
+	<link type="text/css" href="../css/style.css" rel="stylesheet" />
+	<script type="text/javascript" src="../basic/js/jquery-1.7.min.js"></script>
+	<script src="https://ssl.captcha.qq.com/TCaptcha.js"></script>
+	<script type="text/javascript" src="../basic/js/quick_links.js"></script>
+	<script src="../basic/js/template-web.js"></script>
+	<script type="text/javascript" src="../AmazeUI-2.4.2/assets/js/amazeui.js"></script>
+	<script type="text/javascript" src="../js/jquery.imagezoom.min.js"></script>
+	<script type="text/javascript" src="../js/jquery.flexslider.js"></script>
+	<script type="text/javascript" src="../js/list.js"></script>
+	<script src="../js/base.js"></script>
+	<script type="text/javascript" src="../js/getData.js"></script>
+	<script src="../js/login.js"></script><script src="https://res.wx.qq.com/connect/zh_CN/htmledition/js/wxLogin.js"></script>
+
+</head>
+
+<body>
+
+	
+	<!--顶部导航条 -->
+	<!--顶部导航条 -->
+	<div class="login-pop"
+		style="display: none;width: 100%;height: 100%;position: absolute;top: 200px;left: 0;background-color:rgba(1,1,1,.5);z-index:10012;">
+		<div class="logins" style="position: relative;">
+			<div class="cloneLogin"
+				style="font-size: 30px;font-weight: 400;position: absolute;top: 5px;right: 5px;cursor: pointer;">x</div>
+			<div class="login-status" style="display: flex;">
+				<div class="loginBtn1" style="color: #E4393C;">账号登录</div>
+				<div class="regerBtn1">注册</div>
+			</div>
+			<div class="inputList btn1" style="margin-top: 40px;">
+				<input id="input_pwd" value="" placeholder="填写手机号码" />
+				<div></div>
+			</div>
+
+			<div class="inputList btn2" style="margin-top: 10px;margin-bottom: 20px;">
+				<div style="left: 0;"></div>
+				<input id="input_name" value="" style="margin-left: 45px;" placeholder="请填写姓名" />
+			</div>
+			<div class="inputList btn2" style="margin-top: 10px;margin-bottom: 20px;">
+				<div style="left: 0;"></div>
+				<input value="" id="input_phone" style="margin-left: 45px;" placeholder="请填写手机号" />
+			</div>
+
+			<div class="inputList" style="margin-top: 28px;margin-bottom: 27px;">
+				<input id="input_code" class="phone" value="" placeholder="请填写验证码" />
+				<button class="getcode code-1" style="position: absolute;" id="TencentCaptcha" data-appid="2006574121"
+					data-cbfn="callback" type="button">获取验证码</button><button class="getcode code-2" style="position: absolute;" type="button">获取验证码</button>
+			</div>
+
+			<div class="inputList btn2" style="margin-top: 10px;margin-bottom: 20px;">
+				<div style="left: 0;"></div>
+				<input value="" id="input_code1" style="margin-left: 45px;" placeholder="分享成员的手机号即为推荐码" />
+			</div>
+			<button type="button" style="color:#4FB84A;text-align: center;margin-bottom: 10px;background:#fff;border: none;"  class="am-btn am-btn-danger btn2" data-am-modal="{target: '#my-popup'}">
+				《健德商城VIP会员协议》
+			</button>
+
+			<div class="am-popup" id="my-popup">
+				<div class="am-popup-inner">
+					<div class="am-popup-hd">
+						<h4 class="am-popup-title">会员服务条款</h4>
+						<span data-am-modal-close class="am-close">&times;</span>
+					</div>
+					<div class="am-popup-bd">
+						<p class="popups_text">在您注册成为健德生态VIP商城会员之前，请认真阅读本《健德生态会员服务条款》（以下简称“服务条款”）并选择接受或不接受本服务条款，您的购买、登录、使用等行为将视为对本服务条款的接受，并同意接受本服务条款各项条款的约束。 接受此条款并点击注册，注册成为VIP商业会员后，即可享受VIP商城会员服务。</p>
+						<div class="popups_title">会员权利和义务</div>
+						<div class="popups_text">1.健德生态VIP商城会员：是通过健德生态小程序申请会员的客户。</div>
+						<div class="popups_text">2.会员服务：成为健德生态VIP商城以后，在商城购物时可以享受会员优惠和健德生态商城包邮服务，以及健德生态商城其他的优惠活动（如商城拼团，优惠券，促销等单独活动说明）。</div>
+						<div class="popups_text">3.会员身份识别：健德生态商城以会员的微信ID作为唯一会员识别标识，一个微信ID只能注册一个会员账号，请会员在支付前确认自己的微信ID并输入微信支付密码。使用德分显示商品价格的，只能使用德分支付，德分支付请提前设置好德分支付密码，妥善保管并牢记密码。</div>
+						<div class="popups_text">4.健德生态商城会员账号有效期：自注册之日起，终生有效。</div>
+						<div class="popups_text">5.健德生态商城会员账号不计息，不得转让或租借赠予他人，由此产生一切损失自行承担。</div>
+						<div class="popups_text">6.会员在购买商品时，务必提供真实准确的个人信息：收货地址，收货电话，收货人等详细信息，如因会员自己填写的信息有误，造成的损失，健德生态商城一律不承担。</div>
+						<div class="popups_text">7.常规商品（除VIP商城德分商品外）退换货：自商品售出之日（以会员实际收货日期为准）起7日内可以退换货，15日内可以换货。15日后系统自动默认收货的不能退换货。会员在收到货后，请务必仔细检查包装，以及产品是否完好，如有包装破损，可以选择拒收，如产品有质量问题，请第一时间联系健德生态商城客服：400-000-1941。（详见健德生态商城售后服务）</div>
+						<div class="popups_title">用户隐私制度</div>
+						<div class="popups_text">当您在健德生态商城购物时，我们可能需要您提供您个人的微信ID，收货地址，电话号码或其它联络信息，以便我们及时处理您的订单，这些信息仅作为健德生态商城销售和会员购物使用，健德生态商城不会因市场行销目的向健德生态以外的其它公司泄露任何顾客个人信息，但在某些情况下，比如在送货服务中，健德生态商城需要与专业运输公司合作，他们将根据顾客提供的姓名和地址运送健德生态商城的商品。此种情况下，健德生态商城将严格监督合作公司，确保顾客个人信息和隐私不被侵犯。</div>
+						<div class="popups_title">用户的帐号、密码和安全性</div>
+						<div class="popups_text">用户一旦注册健德生态商城会员，系统将自动识别您的微信ID，为会员的唯一识别标识，如果因用户未保管好自己的微信ID帐号和密码，造成的损失，用户将负全部责任。</div>
+					</div>
+				</div>
+			</div>
+			<div class=" btn2" style="color: #999;text-align: center;margin-bottom: 10px;">温馨提示：若无上级成员，推荐码填写17764033375
+			</div>
+			<div class=" btn2 loginBtn regerBtn" style="margin: 0 auto;cursor: pointer;">确认</div>
+
+			<div class="loginBtn btn1" style="cursor: pointer;" id="regerBtn2">登录</div>
+			<div class="imgwechart btn1">
+				<img style="width: 100%;height:100%" src="../images/wx.png">
+			</div>
+			<div class="btn1 wecharts" style="text-align: center;color: #999999">微信登录</div>
+		</div>
+		<div class="register"></div>
+	</div>
+
+	<div class="hmtop" style="background-color: #fff;">
+		<!--顶部导航条 -->
+		<div class="popBtn">
+			<div class="popcar">
+				<div class="clone">x</div>
+				<div class="title6">火车票飞机票预定酒店</div>
+				<div class="title7">上健德购购，购票送资产</div>
+				<div class="bar1" style="display: flex;">
+					<div><img src="../images/jiadehost.png" /></div>
+					<div>
+						<div class="bar-text">健德购购APP</div>
+						<div class="bar-text1">一个提供消费创业资源共和体平台</div>
+						<div class="bar-text2">扫二维码，下载健德购购</div>
+					</div>
+				</div>
+				<div class="popBtns">返回首页</div>
+			</div>
+			<div class="popApp">
+				<div class="clone">x</div>
+				<div class="title6">火车票飞机票预定酒店</div>
+				<div class="title7">上健德购购，购票送资产</div>
+				<div class="bar1" style="display: flex;">
+					<div><img src="../images/jiadehost.png" /></div>
+					<div>
+						<div class="bar-text">健德购购APP</div>
+						<div class="bar-text1">一个提供消费创业资源共和体平台</div>
+						<div class="bar-text2">扫二维码，下载健德购购</div>
+					</div>
+				</div>
+				<div class="popBtns">返回首页</div>
+			</div>
+		</div>
+		<!--顶部导航条 -->
+		<div class="am-container1 header">
+			<div class="ul-list" style="cursor: pointer;">
+				<ul class="message-r" style="position: relative;">
+					<div class="topMessage">
+						<div class="menu-hd loginShow">
+							欢迎光临健德购购，请<a href="#" target="_top" style="color: #FB3435;" class="">登录</a> 成为会员
+						</div>
+						<div ><a class="loginShow1" style="color: #FB3435;" href="../person/index.html"></a></div>
+					</div>
+					<div class="topMessage home" style="width: 110px;height: 40rpx;">
+						<div class="am-dropdown" data-am-dropdown>
+							<button class="am-btn am-btn-primary am-dropdown-toggle" style="border:none" data-am-dropdown-toggle>我的购购 <span class="am-icon-caret-down"></span></button>
+							<ul class="am-dropdown-content">
+								<div class="bar-text3 am-dropdown-header">已买到的商品</div>
+								<div class="bar-text23 am-dropdown-header">下载建德app</div>
+							</ul>
+						  </div>
+					</div>
+					<div class="topMessage my-shangcheng">
+						<div class="menu-hd tabList MyShangcheng"><a href="#" target="_top">收藏夹</a></div>
+					</div>
+					<div class="topMessage mini-cart">
+						<div class="menu-hd shopList shopTop"><a id="mc-menu-hd" href="#" target="_top"><span>商家入驻</span></a>
+						</div>
+					</div>
+					<div class="topMessage favorite">
+						<div class="menu-hd tabList"><a href="#" target="_top"><span>分销中心</span></a></div>
+					</div>
+					<div class="topMessage favorite">
+						<div class="menu-hd tabList"><a href="#" target="_top"><span>名片管理入口</span></a></div>
+					</div>
+					<div class="top-btn" style="z-index:10000;">
+						<a href="./shopcart.html" class="lista top-car" style="color:#fff!important">购物车0</a>
+						<a href="../person/order.html" class="lista"
+							style="border:2px solid rgba(221,221,221,1);">我的订单</a>
+					</div>
+				</ul>
+			</div>
+		</div>
+	<script>
+		$(function () {
+			$('.clicks').click(function () {
+				console.log(321312)
+				$(".menu-list").toggle()
+			})
+		})
+	</script>
+	<!--悬浮搜索框-->
+
+	<div class="nav white">
+		 
+		<div class="logoBig" style="display: flex;">
+			<li><img style="height: 90px;width: 90px;" src="../images/jiandelogo.png" class="imgesBtn" /></li>
+			<li class="login-title" style="margin-left: 15px;">
+				<div class="login-title">健德购购</div>
+				<div class="login-text">一款超级的互联网新电商购物综合系统</div>
+				<div class="login-text2">品质生活来购购</div>
+			</li>
+		</div>
+
+		<div class="search-bar pr" style="margin: 0;padding-left: 350px;">
+			<a name="index_none_header_sysc" href="#"></a>
+			<form style="width: 470px;" class="goSearch">
+				<input style="margin-left: 15px;width: 76%;" id="searchInput" class=“search13” name="index_none_header_sysc" type="text"
+					placeholder="购物返积分，手机下单更便捷" autocomplete="off">
+				<input id="ai-topsearch" class="submit am-btn 
+ search13" value="搜索" index="1" type="button">
+			</form>
+			<div class="search-list">
+
+			</ul>
+		</div>
+		<script id="search" type="text/template">
+			{{each pageData value inde}}
+				<li>{{value}}</li>
+			{{/each}}
+		</script>
+		<div class="clear"></div>
+	</div>
+	<script>
+		$(function () {
+			var items = ''
+    		for (let i = 0; i < searchList.length; i++) {
+    		    items += `<li data-text="${searchList[i]}" style="cursor: pointer;">${searchList[i]}</li>
+    		      `
+			}
+			console.log(items,"items")
+			$(".searchLists").html(items)
+			$("#prof1").mouseenter(function () {
+				$(this).children(".text").css("display", "block");
+			})
+			$("#prof1").mouseleave(function () {
+				$(this).children(".text").css("display", "none");
+			});
+		})
+	</script>
+	<div class="shopNav" style="height: 0;">
+		<div class="slideall" style="height:0;">
+
+			<div class="long-title"><span class="all-goods">全部分类</span></div>
+			<div class="nav-cont" style="margin-left: 50px;">
+				<ul class="class_header">
+					<li class="qc"><a href="#" style="font-size: 14px;">合作共赢</a></li>
+					<li class="qc"><a href="./shopping.html" style="font-size: 14px;">购购商城</a></li>
+					<li class="qc"><a href="#" style="font-size: 14px;">资源入驻</a></li>
+					<li class="qc prods">
+						<a id="prods" href="#" style="font-size: 14px;">生活圈</a>
+						<div class="nav-list nav-list2">
+							<ul>
+								<li class="ticketing">旅行票务</li>
+									<li class="ticketing">智教培优</li>
+									<li class="ticketing">艺品艺拍</li>
+									<li class="ticketing">优品批发</li>
+									<li class="ticketing">票务系统</li>
+									<li class="ticketing">直播礼包</li>
+							</ul>
+						</div>
+					</li>
+					<li class="qc prods tabList">
+						<a id="zoology" href="#" style="font-size: 14px;">快捷社区</a>
+					</li><li class="qc prods tabList">
+						<a id="zoology" href="#" style="font-size: 14px;">智慧商圈</a>
+					</li>
+					<li class="qc tabList"><a href="#" style="font-size: 14px;">直播礼包</a></li>
+					<li class="qc ticket"><a href="#" style="font-size: 14px;">票务系统</a></li>
+					<li class="qc"><a href="#" style="font-size: 14px;">新闻资讯</a></li><li class="qc"><a href="./investment.html" style="font-size: 14px;">商家入驻</a></li>
+				</ul>
+			</div>
+			<script id="productOptions" type="text/template">
+				{{each pageData value index}}
+				<li class="appliance js_toggle relative">
+					<div class="category-info">
+						<h3 class="category-name b-category-name"><i></i><a class="ml-22" style="color:#666666;" title="花茶、果茶">{{value.storegc_name}}</a></h3>
+					</div>
+				</li>
+				{{/each}}
+			</script>
+			<!--侧边导航 -->
+			<div id="nav" class="navfull">
+				<div class="area clearfix">
+					<div class="category-content" id="guide_2">
+			
+						<a href="./sort.html" style="background: #fff;" class="category">
+							<ul class="category-list" id="js_climit_li">
+			
+			
+							</ul>
+						</a>
+					</div>
+			
+				</div>
+			</div>
+		</div>
+	</div>
+	<script id="class_headers" type="text/template">
+		{{each pageData value index}}
+			<li class="qc className" data-index="{{index}}"><a href="#" style="font-size: 14px;">{{value.appName}}</a></li>
+		{{/each}}
+	</script>
+	<div class="line-goods" style="position: absolute;top: 145px;"></div>
+	<ol class="am-breadcrumb am-breadcrumb-slash">
+		<li><a href="#">首页</a></li>
+		<li><a href="#">分类</a></li>
+		<li class="am-active">内容</li>
+	</ol>
+	<script type="text/javascript">
+		$(function () { });
+		$(window).load(function () {
+			$('.flexslider').flexslider({
+				animation: "slide",
+				start: function (slider) {
+					$('body').removeClass('loading');
+				}
+			});
+		});
+	</script>
+
+	<!--放大镜-->
+	<!-- <div class="detailShop" style="width: 1200px;margin: 0 auto;">
+	
+	</div> -->
+	<!-- <script id="template9" type="text/template"> -->
+	<div class="item-inform">
+	</div>
+
+	<!--优惠套装-->
+	<!-- <div class="match">
+					<div class="match-title">优惠套装</div>
+					<div class="match-comment">
+						<ul class="like_list">
+							<li>
+								<div class="s_picBox">
+									<a class="s_pic" href="#"><img src="../images/cp.jpg"></a>
+								</div> <a class="txt" target="_blank" href="#">萨拉米 1+1小鸡腿</a>
+								<div class="info-box"> <span class="info-box-price">¥ 29.90</span> <span class="info-original-price">￥ 199.00</span> </div>
+							</li>
+							<li class="plus_icon"><i>+</i></li>
+							<li>
+								<div class="s_picBox">
+									<a class="s_pic" href="#"><img src="../images/cp2.jpg"></a>
+								</div> <a class="txt" target="_blank" href="#">ZEK 原味海苔</a>
+								<div class="info-box"> <span class="info-box-price">¥ 8.90</span> <span class="info-original-price">￥ 299.00</span> </div>
+							</li>
+							<li class="plus_icon"><i>=</i></li>
+							<li class="total_price">
+								<p class="combo_price"><span class="c-title">套餐价:</span><span>￥35.00</span> </p>
+								<p class="save_all">共省:<span>￥463.00</span></p> <a href="#" class="buy_now">立即购买</a> </li>
+							<li class="plus_icon"><i class="am-icon-angle-right"></i></li>
+						</ul>
+					</div>
+				</div>
+				<div class="clear"></div> -->
+
+
+	<!-- introduce-->
+	<script id="template9" type="text/template">
+		<div style="display:flex">
+			<div class="clearfixLeft" id="clearcontent">
+				<div class="box" style="padding:0">
+					<div class="tb-booth tb-pic tb-s310" id="imgbtn">
+							<a href="../images/01.jpg"><img class="top_img" style="height:415px" src="{{pageData.goods_image}}" alt="细节展示放大镜特效" rel="../images/01.jpg"
+								class="jqzoom" /></a>
+					</div>
+				</div>
+	
+				<div class="clear"></div>
+			</div>
+			<div class="clearCenter" style="overflow: scroll;height:400px;width:150px;overflow-x:hidden">
+				{{each pageData.goodsimagesList item indexs}}
+				<div class="{{item.select?'selectImg selectBorder':'selectImg'}}" style="margin-top:10px;margin-left:10px;cursor: pointer;width:90px" data-url="{{item.goodsimage_url}}" data-index="{{indexs}}">
+					<img style="width:80px;height:80px" src="{{item.goodsimage_url}}"/>
+				</div>	
+				{{/each}}
+			</div>
+		<div class="clearfixRight" style="position: relative;">
+		<!--规格属性-->
+		<!--名称-->
+		<div class="tb-detail-hd">
+			<h1>
+				{{pageData.goods_name}}
+			</h1>
+		</div>
+		<div class="tb-detail-list">
+			<div class="clear"></div>
+			<div style="border-bottom: 1px solid #eee;padding-bottom:15px">
+				<!-- <div style="font-size: 20px;color: #333;">良品铺子 手剥松子218g 坚果炒货 巴西松子</div> -->
+				<div style="display: flex;">
+					<div>运费：{{pageData.goods_freight}}</div>
+					<div>库存：{{pageData.SKUList[0].goods_storage}}</div>
+				</div>
+			</div>
+			<div class="clear"></div>
+			<div style="display:flex" class="prices">
+				<div>售价：</div>
+				<div style="color:#FB3435;font-size:28px" ><span style="font-size:14px">¥</span><span class="textPrice" style="font-size:28px">{{pageData.newcomer==0?pageData.goods_price:pageData.SKUList[0].newcomer_price}}</span></div>
+				<div style="font-size:14rpx;color:#666666;text-decoration:line-through">¥{{pageData.goods_marketprice}}</div>
+				<div class="piont" style="{{pageData.is_vip==0?'':'display:none'}}">返{{pageData.goods_integral}}积分</div>
+			<div class="piont" style="{{pageData.is_vip==1?'':'display:none'}}">赠资产</div>
+			</div>
+			<div class="cart-title">规格:{{pageData.spec_name==null&&pageData.spec_value==null?"单规格":''}}</div>
+			<!--各种规格-->
+			<dl class="iteminfo_parameter sys_item_specpara" style="padding-left:20px">
+
+				<dd style="{{pageData.spec_name==null&&pageData.spec_value==null?'display:none':''}}">
+					<!--操作页面-->
+
+					<div class="theme-popover-mask"></div>
+
+					<div class="theme-popover">
+						<div class="theme-span"></div>
+						<div class="theme-poptit">
+							<a href="javascript:;" title="关闭" class="close">×</a>
+						</div>
+						<div class="theme-popbod dform">
+							<form class="theme-signin" name="loginform" action="" method="post">
+
+								<div class="theme-signin-left">
+									<div class="theme-options">
+										{{each pageData.spec_name value index}}
+										<ul style="display:flex;flex-wrap:wrap">
+											<li class="class2" data-value="{{value}}">{{value}}: </li>
+											{{each pageData.spec_value[index] values indexs}}
+											<li class="sku-line class1" data-value="{{values}}" data-index="{{index}}" data-index1={{indexs}} style="padding:8px 10px;flex-wrap:wrap">
+												{{values}}
+											</li>
+											{{/each}}
+										</ul>
+										{{/each}}
+									
+								</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</dd>
+			</dl>
+			<!--  -->
+			<div class="theme-options" style="display:flex">
+				
+				<dd style="height:30px;display:flex">
+					<div style="margin-right:10px;margin-top:5px">数量</div>
+					<input id="min" class="am-btn am-btn-default" name="" type="button" value="-" />
+					<input id="text_box" name="" type="text" value="1" style="width:35px;text-align:center" />
+					<input id="add" class="am-btn am-btn-default" name="" type="button" value="+" />
+					<!-- <span id="Stock" class="tb-hidden">库存<span class="stock">1000</span>件</span> -->
+				</dd>
+			</div>
+			<!-- <div class="theme-signin-right">
+				<div class="img-info">
+					<img src="../images/songzi.jpg" />
+				</div>
+				<div class="text-info">
+					<span class="J_Price price-now">¥39.00</span>
+					<span id="Stock" class="tb-hidden">库存<span class="stock">1000</span>件</span>
+				</div>
+			</div> -->
+			<div style="display:flex">
+				<li style="margin-top:0px;margin-right:20px">
+					<div class="clearfix tb-btn tb-btn-buy theme-login" style="margin-left:0">
+						<a id="LikBuy" style="display: inline-block;width:136px;line-height:40px;font-size:16px;height:40px;margin-right:20px" title="点此按钮到下一步确认购买信息">立即购买</a>
+					</div>
+				</li>
+				<li >
+				<div class="clearfix tb-btn tb-btn-basket theme-login" style="{{pageData.newcomer==1||pageData.store_id!=1?'display:none;margin-left:0':'margin-left:0'}}">
+						<a id="LikBasket" style="display: inline-block;width:136px;line-height:40px;font-size:16px;height:40px" title="加入购物车" href="#"><i></i>加入购物车</a>
+					</div>
+				</li>
+			</div>
+			
+			<div style="display:flex;margin-left:30px;margin-top:20px">
+				<img class="img1" style="width:13px;height:12px;margin-top:4px;margin-right:5px" src="../images/xinxin.png">
+				<img class="img2" style="width:13px;height:12px;margin-top:4px;margin-right:5px" src="../images/xinxin2.png">
+				<div class="coollet">收藏商品</div>
+			</div>
+		</div>
+	</div>
+
+	</dd>
+	</dl>
+	</div>
+
+	
+
+	</div>
+</div>
+</div>
+</script>
+	<div class="clear"></div>
+	<div class="introduce">
+		<div class="browse">
+			<div class="mc">
+				<div style="width:200px;
+				height:40px;
+				background:rgba(255,109,109,1);
+				opacity:1;line-height:40px;text-align: center;color: #fff;" class="mt">
+					<h2>查看全部商品</h2>
+				</div>
+				<div class="store_show">
+					<div style="display: flex;">
+						<img style="width:20px;height:18px;margin-left:40px" src="../images/store.png">
+						<div class="store_name"></div>
+					</div>
+					<div style="display: flex;margin: 20px 10px;justify-content: space-between;">
+						<div>
+							<img style="width:76px;height:76px;" class="store_img" src="">
+						</div>
+						<div style="margin-right:20px;margin-top:10px">
+							<div>已售<span class="market"></span></div>
+							<div><span class="view"></span>已经收藏</div>
+						</div>
+					</div>
+					<div style="width:200px;
+					height:40px;
+					background:rgba(255,109,109,1);
+					opacity:1;line-height:40px;text-align: center;color: #fff;" class="store">
+						<h2>进店看看</h2>
+					</div>
+				</div>
+				
+				<ul class="detailList">
+
+
+
+					<script id="goods_detail" type="text/template">
+						{{each pageData value inex}}
+						<li class="first">
+							<div class="p-img">
+								<a href='./introduction.html?id={{value.goods_commonid}}'> <img class="" src="{{value.goods_image}}"> </a>
+							</div>
+							<div class="p-name"><a href="#">
+									{{value.goods_name}}
+								</a>
+							</div>
+							<div class="p-price"><strong>￥{{value.goods_price}}</strong></div>
+						</li>
+						{{/each}}
+					</script>
+					<script id="class_headers" type="text/template">
+						{{each pageData value index}}
+							<li class="qc className" data-index="{{index}}"><a href="#" style="font-size: 14px;">{{value.appName}}</a></li>
+						{{/each}}
+					</script>
+				</ul>
+			</div>
+		</div>
+		<div class="introduceMain">
+			<div class="am-tabs" data-am-tabs>
+				<ul class="am-avg-sm-3 am-tabs-nav am-nav am-nav-tabs">
+					<li class="am-active">
+						<a href="#">
+
+							<span class="index-needs-dt-txt">宝贝详情</span></a>
+
+					</li>
+
+					<li>
+						<a href="#">
+
+							<span class="index-needs-dt-txt">全部评价</span></a>
+
+					</li>
+				</ul>
+
+				<div class="am-tabs-bd">
+
+					<div class="am-tab-panel am-fade am-in am-active">
+						<div class="details">
+							<div class="attr-list-hd after-market-hd">
+								<h4>商品细节</h4>
+							</div>
+							<div class="imgCotent">
+
+							</div>
+
+						</div>
+						<div class="clear"></div>
+
+					</div>
+					<div class="am-tab-panel am-fade am-in am-active">
+						<div class="details">
+							<ul class="gaveList">
+								
+								<script id="gaveLists" type="text/template">
+									{{each pageData1 value index}}
+									<li>
+										<div>
+											<img style="width: 40px;height: 40px; border-radius: 50%;" src="{{value.geval_frommemberavatar}}">
+										</div>
+										<div style="margin: 0 40px 0 30px;">
+											<div style="text-align:left">{{value.geval_frommembername}}</div>
+											<div style="margin:10px 0">{{value.geval_addtime}}</div>
+											<div style="display:flex" class="gaveImg">
+											<img  style="{{value.geval_scores>0?'display:block':''}}" src="../images/xinxin2.png">
+												<img style="{{value.geval_scores>1?'display:block':''}}"  src="../images/xinxin2.png">
+												<img style="{{value.geval_scores>2?'display:block':''}}" src="../images/xinxin2.png">
+												<img style="{{value.geval_scores>3?'display:block':''}}" src="../images/xinxin2.png">
+												<img style="{{value.geval_scores>4?'display:block':''}}" src="../images/xinxin2.png">
+											</div>
+										</div>
+										<!-- <div>尺寸：粉37-38码</div> -->
+									</li>
+									{{/each}}
+								</script>
+							</ul>
+						</div>
+						<div class="clear"></div>
+
+					</div>
+				</div>
+
+			</div>
+
+			<div class="clear"></div>
+		</div>
+
+	</div>
+	<!-- </script> -->
+	</div>
+	<!-- 页面底部 -->
+	<div style="background-color: #fff;" class="footerTemplate">
+		<div class="am-container consumer" style="display: flex;height: 130px;border-bottom:1px solid #eee ;">
+				<div style="display: flex;">
+					<div class="fontImg">
+						<div class="max_box_1">
+							<div id="box1"></div>
+ 							<div id="box2"></div>
+						 	<div id="box3"></div> 
+						</div>
+						<div class="max_box_2">
+							<div id="box4"></div>
+ 							<div id="box5"></div>
+ 							<div id="box6"></div> 
+						</div>
+						<div class="texts" style="top:18px">多</div>
+					</div>
+					<div  style="margin-top:17%;" class="decs">品类齐全，轻松购物</div>
+				</div>
+				<div style="display: flex;">
+					<div class="fontImg">
+						<div class="max_box_1">
+							<div id="box1"></div>
+ 							<div id="box2"></div>
+						 	<div id="box3"></div> 
+						</div>
+						<div class="max_box_2">
+							<div id="box4"></div>
+ 							<div id="box5"></div>
+ 							<div id="box6"></div> 
+						</div>
+						<div class="texts" style="top:18px">快</div>
+					</div>
+					<div  style="margin-top:17%;" class="decs">多仓直发，极速配送</div>
+				</div>
+				<div style="display: flex;">
+					<div class="fontImg">
+						<div class="max_box_1">
+							<div id="box1"></div>
+ 							<div id="box2"></div>
+						 	<div id="box3"></div> 
+						</div>
+						<div class="max_box_2">
+							<div id="box4"></div>
+ 							<div id="box5"></div>
+ 							<div id="box6"></div> 
+						</div>
+						<div class="texts" style="top:18px">好</div>
+					</div>
+					<div  style="margin-top:17%;" class="decs">正品行货，精致服务</div>
+				</div>
+				<div style="display: flex;">
+					<div class="fontImg">
+						<div class="max_box_1">
+							<div id="box1"></div>
+ 							<div id="box2"></div>
+						 	<div id="box3"></div> 
+						</div>
+						<div class="max_box_2">
+							<div id="box4"></div>
+ 							<div id="box5"></div>
+ 							<div id="box6"></div> 
+						</div>
+						<div class="texts" style="top:18px">省</div>
+					</div>
+					<div  style="margin-top:17%;" class="decs">天天低价，畅选无忧</div>
+				</div>
+			</div>
+			<div class="am-container footers" style="background-color: #fff;display: flex;">
+				<div class="footer_left">
+					<img src="../images/candorlife.png">
+				</div>
+				<div class="storgeList" style="margin-right:60px">
+					<ul class="class_header uls" style="width:75%;display:flex;flex-wrap: wrap">
+						
+					</ul>
+				</div>
+				<div class="footer_code">
+					<img src="../images/gongzhonaho.png">
+					<div class="code_text">健德购购公众号</div>
+					<div class="code_text">扫一扫 关注我们</div>
+				</div>
+				<div class="footer_code">
+					<img src="../images/jiadehost.png">
+					<div class="code_text" style="font-size: 18px;">健德购购APP</div>
+					<div class="code_text">扫一扫 即刻下载</div>
+				</div>
+				<div class="footer_code">
+					<img src="../images/douyin.png">
+					<div class="code_text" style="font-size: 18px;">健德抖音账号</div>
+					<div class="code_text">扫一扫 关注我们</div>
+				</div>
+			</div>
+			<div class="bottom">
+				<div class="am-container" style="display: flex;background-color: #000;color: #fff;">
+					<div class="bottom_text1">专线服务</div>
+					<div class="bottom_phone">400-828-1088</div>
+					<div class="footer_number">
+						<div>©2020  武汉健德生态科技有限公司</div>
+						<div>鄂公网安备 42010202002251号</div>
+						<a style="color: #fff!important;" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=42010202002228"><img style="width:15px;height:15px" src="../images/huohui.png">鄂ICP备19021339号-1</a>
+					</div>
+				</div>
+				
+			</div>
+	</div>
+	<!-- <script id="template10" type="html/template">
+			{{pageData.goods_body}}					
+	</script>		 -->
+	<script>
+		$(function(){
+			$(".loginShow1").text('会员：'+localStorage.getItem("memberInfo"))
+		})
+	</script>
+<div class="codeImg" style="display:none">
+		<div id="wxCodes"></div>
+		<div class="codeClone">关闭</div>
+	</div></body>
+
+</html>
